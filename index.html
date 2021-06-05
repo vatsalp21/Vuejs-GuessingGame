@@ -1,0 +1,94 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess Game</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .button {
+        color: #fff !important;
+        text-transform: lowercase;
+        text-decoration: none;
+        background: #ed3330;
+        padding: 8px;
+        border-radius: 5px;
+        display: inline-block;
+        border: none;
+      }
+      #hint {
+        background-color: #00fbff;
+        padding-left: 3px;
+        border-radius: 5px;
+      }
+      #answerStatus {
+        background-color: #00fbff;
+        padding-left: 3px;
+        border-radius: 5px;
+      }
+      #number {
+        color: #f6ff00;
+      }
+      #header {
+        color: magenta;
+      }
+      li {
+        list-style-type: none;
+        background: #babab8;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      body {
+        background: #fff2cc;
+        max-width: fit-content;
+        margin: 20px auto;
+        font-family: "Rubik", sans-serif;
+      }
+      li:hover {
+        background-color: #707070;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1 id="header">{{ homePageTitle }}</h1>
+      <li v-for="number in randomNumberArray" @click="saveRandomNumber(number)">
+        <h3 id="number">{{number}}</h3>
+      </li>
+      <!-- <p>correct answer {{ randomNumberArray[randomIndexNumber - 1] }}</p> -->
+      <p id="answerStatus">answer status: {{ answerStatus }}</p>
+      <div v-if="showHint">
+        <p id="hint">hint: {{ hint }}</p>
+      </div>
+      <button @click="toggleShowHint" class="button">
+        <span v-if="!showHint">Show Hint</span>
+        <span v-else>Hide Hint</span>
+      </button>
+    </div>
+
+    <center>
+      <footer>
+        <p>
+          Created with ❤️ and
+          <img
+            src="https://vuejs.org/images/logo.svg"
+            alt="Vue.js"
+            width="20px"
+            height="14.3px"
+          />
+        </p>
+      </footer>
+    </center>
+
+    <script src="script.js"></script>
+  </body>
+</html>
